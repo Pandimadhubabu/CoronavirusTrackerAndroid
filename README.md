@@ -1,8 +1,8 @@
 # Coronavirus Tracker
 Coronavirus tracker app for Android with Google News Feed.
 
-![Android](https://img.shields.io/badge/Android-10%20-blue)
-![Kotlin](https://img.shields.io/badge/Kotlin-orange?logo=Swift&logoColor=white)
+![Android](https://img.shields.io/badge/Android%20-green)
+![Kotlin](https://img.shields.io/badge/Kotlin%20v1.3.61-orange?logo=Kotlin&logoColor=white)
 
 ![image](https://user-images.githubusercontent.com/16730661/77967675-3ed2b280-72ee-11ea-8802-7b4538f59bba.png)
 
