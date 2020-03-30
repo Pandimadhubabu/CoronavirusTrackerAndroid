@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Corona Tracker</string>
+    <string name="title_map">خريطة</string>
+    <string name="title_news">أخبار</string>
+    <string name="title_countries">بلدان</string>
+    <string name="lastupdate">اخر تحديث</string>
+    <string name="confirmed">تم تأكيد</string>
+    <string name="cured">الشفاء</string>
+    <string name="dead">ميت</string>
+    <string name="suspected">يشتبه</string>
+    <string name="mortality_rate">معدل الوفيات</string>
+    <string name="virusearchkeyword">التاجى</string>
+</resources>

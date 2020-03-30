@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Corona Tracker</string>
+    <string name="title_countries">国</string>
+    <string name="title_map">地図</string>
+    <string name="title_news">ニュース</string>
+    <string name="confirmed">確認済み</string>
+    <string name="cured">硬化した</string>
+    <string name="dead">デッド</string>
+    <string name="suspected">疑われる</string>
+    <string name="mortality_rate">死亡率</string>
+    <string name="lastupdate">最後の更新</string>
+    <string name="virusearchkeyword">コロナウイルス</string>
+</resources>

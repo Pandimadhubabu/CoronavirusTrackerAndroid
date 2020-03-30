@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Corona Tracker</string>
+    <string name="title_map">Bản đồ</string>
+    <string name="title_news">Tin tức</string>
+    <string name="title_countries">Quốc gia</string>
+    <string name="confirmed">xác nhận</string>
+    <string name="cured">chữa khỏi</string>
+    <string name="dead">chết</string>
+    <string name="suspected">nghi ngờ</string>
+    <string name="mortality_rate">Tỷ lệ tử vong</string>
+    <string name="lastupdate">Cập nhật lần cuối</string>
+    <string name="virusearchkeyword">virus corona</string>
+</resources>

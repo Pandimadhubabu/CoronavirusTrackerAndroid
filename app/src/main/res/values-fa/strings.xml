@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Corona Tracker</string>
+    <string name="title_map">پوشه</string>
+    <string name="title_news">اخبار</string>
+    <string name="title_countries">کشورها</string>
+    <string name="lastupdate">آخرین به روز رسانی</string>
+    <string name="confirmed">تأیید</string>
+    <string name="cured">درمان</string>
+    <string name="dead">مرده</string>
+    <string name="suspected">مشکوک</string>
+    <string name="mortality_rate">میزان مرگ و میر</string>
+    <string name="virusearchkeyword">کرونا</string>
+</resources>

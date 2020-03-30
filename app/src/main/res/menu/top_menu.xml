@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+<item
+    android:icon="@drawable/filter_icon"
+    app:showAsAction="always">
+    <menu>
+        <item android:id="@+id/map_confirmed"
+            android:title="@string/confirmed"
+            app:showAsAction="always"></item>
+        <item android:id="@+id/map_dead"
+            android:title="dead"
+            app:showAsAction="always">
+        </item>
+        <item android:id="@+id/map_cured"
+            android:title="cured"
+            app:showAsAction="always">
+        </item>
+    </menu>
+</item>
+</menu>

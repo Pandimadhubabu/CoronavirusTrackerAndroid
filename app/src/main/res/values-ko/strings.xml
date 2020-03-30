@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Corona Tracker</string>
+    <string name="title_map">지도</string>
+    <string name="title_news">지도</string>
+    <string name="title_countries">국가</string>
+    <string name="lastupdate">마지막 업데이트</string>
+    <string name="confirmed">확인 됨</string>
+    <string name="cured">치료 됨</string>
+    <string name="dead">죽은</string>
+    <string name="suspected">의심되는</string>
+    <string name="mortality_rate">정신 율</string>
+    <string name="virusearchkeyword">코로나바이러스</string>
+</resources>

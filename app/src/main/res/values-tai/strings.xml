@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="title_map">แผนที่</string>
+    <string name="title_news">ข่าว</string>
+    <string name="title_countries">ประเทศ</string>
+    <string name="lastupdate">ปรับปรุงล่าสุด</string>
+    <string name="confirmed">ยืนยัน</string>
+    <string name="cured">หาย</string>
+    <string name="dead">ตาย</string>
+    <string name="suspected">สงสัยว่า</string>
+    <string name="mortality_rate">อัตราการตาย</string>
+    <string name="virusearchkeyword">ไวรัสโคโรน่า</string>
+</resources>

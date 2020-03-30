@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">冠状病毒</string>
+    <string name="title_map">地图</string>
+    <string name="title_news">新闻</string>
+    <string name="title_countries">国家</string>
+    <string name="lastupdate">最后更新</string>
+    <string name="confirmed">已确认</string>
+    <string name="cured">治愈</string>
+    <string name="dead">死</string>
+    <string name="suspected">怀疑</string>
+    <string name="mortality_rate">死亡率</string>
+    <string name="virusearchkeyword">冠状病毒</string>
+</resources>

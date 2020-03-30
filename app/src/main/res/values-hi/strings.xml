@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Corona Tracker</string>
+    <string name="title_map">मानचित्र</string>
+    <string name="title_news">समाचार</string>
+    <string name="title_countries">देश</string>
+    <string name="lastupdate">अंतिम अद्यतन</string>
+    <string name="confirmed">पुष्टि</string>
+    <string name="cured">ठीक</string>
+    <string name="dead">मृत</string>
+    <string name="suspected">संदिग्ध</string>
+    <string name="mortality_rate">मृत्यु दर</string>
+    <string name="virusearchkeyword">कोरोनावायरस</string>
+</resources>

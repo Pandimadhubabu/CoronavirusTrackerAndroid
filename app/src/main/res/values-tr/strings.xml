@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Corona Tracker</string>
+    <string name="title_countries">Ülkeler</string>
+    <string name="title_map">Harita</string>
+    <string name="title_news">Haberler</string>
+    <string name="confirmed">doğrulanan</string>
+    <string name="cured">iyileşme</string>
+    <string name="dead">ölüm</string>
+    <string name="suspected">şüpheli</string>
+    <string name="mortality_rate">Ölüm Oranı</string>
+    <string name="justnow">az önce</string>
+    <string name="aminuteago">bir dakika önce</string>
+    <string name="xminutesago">%1$s dakika önce</string>
+    <string name="anhourago">bir saat önce</string>
+    <string name="xhoursago">%1$s saat önce</string>
+    <string name="yesterday">dün</string>
+    <string name="xdaysago">%1$s gün önce</string>
+    <string name="lastupdate">Son güncelleme</string>
+    <string name="virusearchkeyword">korona</string>
+</resources>

@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">Coronavirus Tracker</string>
+    <string name="title_countries">Countries</string>
+    <string name="title_map">Map</string>
+    <string name="title_news">News</string>
+    <string name="confirmed">confirmed</string>
+    <string name="cured">cured</string>
+    <string name="dead">dead</string>
+    <string name="suspected">suspected</string>
+    <string name="mortality_rate">mortality rate</string>
+    <string name="lastupdate">Latest update</string>
+    <string name="virusearchkeyword">coronavirus</string>
+    <string name="justnow">just now</string>
+    <string name="aminuteago">a minute ago</string>
+    <string name="xminutesago">%1$s minutes ago</string>
+    <string name="anhourago">an hour ago</string>
+    <string name="xhoursago">%1$s hours ago</string>
+    <string name="yesterday">yesterday</string>
+    <string name="xdaysago">%1$s days ago</string>
+</resources>

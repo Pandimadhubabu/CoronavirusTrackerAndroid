@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Corona Tracker</string>
+    <string name="title_map">Map</string>
+    <string name="title_countries">Landen</string>
+    <string name="title_news">Nieuws</string>
+    <string name="lastupdate">Laatste update</string>
+    <string name="confirmed">bevestigd</string>
+    <string name="cured">cured</string>
+    <string name="dead">dead</string>
+    <string name="suspected">vermoed</string>
+    <string name="mortality_rate">Sterftecijfer</string>
+</resources>
