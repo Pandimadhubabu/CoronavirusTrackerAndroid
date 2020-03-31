@@ -25,8 +25,8 @@ public class OpenGraph
 	private ArrayList<OpenGraphNamespace> pageNamespaces;
     private Hashtable<String, ArrayList<MetaElement>> metaAttributes;
     private String baseType;
-    private boolean isImported; // determine if the object is a new incarnation or representation of a web page
-    private boolean hasChanged; // track if object has been changed
+    private boolean isImported;
+    private boolean hasChanged;
 
     public final static String[] REQUIRED_META = new String[]{"title", "type", "image", "url" };
 

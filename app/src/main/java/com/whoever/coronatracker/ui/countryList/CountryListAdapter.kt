@@ -15,7 +15,6 @@ import kotlinx.android.synthetic.main.country_row.view.*
 import java.util.*
 import kotlin.collections.HashMap
 
-
 class CountryListAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private val STATS_ROW_VIEW_TYPE = 0
@@ -24,7 +23,6 @@ class CountryListAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     var countries = HashMap<String, Country>()
     var summary = Summary()
-
 
     override fun getItemViewType(position: Int): Int {
         if (position == 0) return STATS_ROW_VIEW_TYPE
@@ -39,12 +37,12 @@ class CountryListAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
 
         val layoutInflater = LayoutInflater.from(parent.context)
-        if (viewType == MENU_ITEM_VIEW_TYPE) {
+        return if (viewType == MENU_ITEM_VIEW_TYPE) {
             val cellForRow = layoutInflater.inflate(R.layout.country_row, parent, false)
-            return CountryViewHolder(cellForRow)
+            CountryViewHolder(cellForRow)
         } else {
             val cellForRow = layoutInflater.inflate(R.layout.chart_row, parent, false)
-            return SummaryViewHolder(cellForRow)
+            SummaryViewHolder(cellForRow)
         }
     }
 
@@ -140,8 +138,5 @@ class CountryViewHolder(v: View): RecyclerView.ViewHolder(v) {
 }
 
 class SummaryViewHolder(v: View): RecyclerView.ViewHolder(v) {
-
-}
-class BannerAdViewHolder(v: View): RecyclerView.ViewHolder(v) {
 
 }

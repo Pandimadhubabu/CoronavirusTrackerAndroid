@@ -8,18 +8,13 @@ import android.view.*
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
-import androidx.lifecycle.observe
-import com.cocoahero.android.geojson.GeoJSONObject
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.MarkerOptions
 import com.whoever.coronatracker.services.JHUService
 import com.whoever.coronatracker.R
-import com.whoever.coronatracker.helpers.TimeHelper
 import com.whoever.coronatracker.models.Country
-import kotlinx.android.synthetic.main.custom_toolbar.*
-import kotlinx.android.synthetic.main.fragment_country_list.*
 import kotlinx.android.synthetic.main.fragment_map.*
 import java.util.*
 import kotlin.collections.HashMap
@@ -29,7 +24,7 @@ class MapFragment : Fragment(), OnMapReadyCallback {
     private lateinit var mapViewModel: MapViewModel
     private lateinit var googleMap: GoogleMap
     private val service = JHUService()
-    private var virusStatus: VirusStatus = VirusStatus.confirmed
+    private var virusStatus: VirusStatus = VirusStatus.Confirmed
     override fun onCreateView(
             inflater: LayoutInflater,
             container: ViewGroup?,
@@ -40,8 +35,7 @@ class MapFragment : Fragment(), OnMapReadyCallback {
         mapViewModel.data.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
             render(it.first)
         })
-        val root = inflater.inflate(R.layout.fragment_map, container, false)
-        return root
+        return inflater.inflate(R.layout.fragment_map, container, false)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -73,18 +67,18 @@ class MapFragment : Fragment(), OnMapReadyCallback {
 
         when (itemId) {
             R.id.map_confirmed -> {
-                asyncTask.execute(VirusStatus.confirmed)
+                asyncTask.execute(VirusStatus.Confirmed)
                 mapType.text = resources.getString(R.string.confirmed)
                 mapType.setBackgroundColor(ContextCompat.getColor(this.context!!, R.color.pastelOrange))
             }
             R.id.map_dead -> {
                 mapType.text = resources.getString(R.string.dead)
-                asyncTask.execute(VirusStatus.dead)
+                asyncTask.execute(VirusStatus.Dead)
                 mapType.setBackgroundColor(ContextCompat.getColor(this.context!!, R.color.pastelRed))
             }
             R.id.map_cured -> {
                 mapType.text = resources.getString(R.string.cured)
-                asyncTask.execute(VirusStatus.cured)
+                asyncTask.execute(VirusStatus.Cured)
                 mapType.setBackgroundColor(ContextCompat.getColor(this.context!!, R.color.pastelGreen))
             }
         }
@@ -102,44 +96,44 @@ class MapFragment : Fragment(), OnMapReadyCallback {
         selectMapType(R.id.map_confirmed)
     }
 
-    fun render(countries: HashMap<String, Country>) {
+    private fun render(countries: HashMap<String, Country>) {
         this.activity?.runOnUiThread {
             googleMap.clear()
             for (item in countries) {
-                if (virusStatus == VirusStatus.confirmed && item.value.confirmed == 0) {
+                if (virusStatus == VirusStatus.Confirmed && item.value.confirmed == 0) {
                     continue
-                } else if (virusStatus == VirusStatus.cured && item.value.cured == 0) {
+                } else if (virusStatus == VirusStatus.Cured && item.value.cured == 0) {
                     continue
-                } else if (virusStatus == VirusStatus.dead && item.value.dead == 0) {
+                } else if (virusStatus == VirusStatus.Dead && item.value.dead == 0) {
                     continue
-                } else if (virusStatus == VirusStatus.suspected && item.value.suspected == 0) {
+                } else if (virusStatus == VirusStatus.Suspected && item.value.suspected == 0) {
                     continue
                 }
 
                 val marker = googleMap.addMarker(MarkerOptions().position(item.value.latLng))
                 val locale = Locale("", item.key)
                 marker.title = locale.displayCountry
-                marker.setIcon(BitmapDescriptorFactory.fromBitmap(createImage(100,100, Color.WHITE, item.value, virusStatus)!!))
+                marker.setIcon(BitmapDescriptorFactory.fromBitmap(createImage(item.value, virusStatus)!!))
                 marker.tag = virusStatus
 
             }
         }
     }
 
-    private fun createImage(width: Int, height: Int, color: Int, country: Country, status: VirusStatus): Bitmap? {
+    private fun createImage(country: Country, status: VirusStatus): Bitmap? {
         val paint2 = Paint()
         var count = 0
-        if (status == VirusStatus.confirmed) {
-            paint2.setColor(ContextCompat.getColor(this.context!!, R.color.pastelOrange))
+        if (status == VirusStatus.Confirmed) {
+            paint2.color = ContextCompat.getColor(this.context!!, R.color.pastelOrange)
             count = country.confirmed!!
-        } else if (status == VirusStatus.cured) {
-            paint2.setColor(ContextCompat.getColor(this.context!!, R.color.pastelGreen))
+        } else if (status == VirusStatus.Cured) {
+            paint2.color = ContextCompat.getColor(this.context!!, R.color.pastelGreen)
             count = country.cured!!
-        } else if (status == VirusStatus.dead) {
-            paint2.setColor(ContextCompat.getColor(this.context!!, R.color.pastelRed))
+        } else if (status == VirusStatus.Dead) {
+            paint2.color = ContextCompat.getColor(this.context!!, R.color.pastelRed)
             count = country.dead!!
-        } else if (status == VirusStatus.suspected) {
-            paint2.setColor(Color.YELLOW)
+        } else if (status == VirusStatus.Suspected) {
+            paint2.color = Color.YELLOW
             count = country.suspected!!
         }
         val diameter = radius(count) * 2
@@ -148,16 +142,16 @@ class MapFragment : Fragment(), OnMapReadyCallback {
         canvas.drawCircle(canvas.width / 2f,canvas.width / 2f,canvas.width / 2f, paint2)
 
         val paint3 = Paint()
-        paint3.setColor(Color.WHITE)
+        paint3.color = Color.WHITE
         paint3.style = Paint.Style.STROKE
         paint3.strokeWidth = 3f
         canvas.drawCircle(canvas.width / 2f, canvas.width / 2f, canvas.width / 2f, paint3)
 
         val paint = Paint()
-        paint.setColor(Color.WHITE)
-        paint.setTextSize(27f)
-        paint.setTextScaleX(1f)
-        paint.setTypeface(Typeface.DEFAULT_BOLD)
+        paint.color = Color.WHITE
+        paint.textSize = 27f
+        paint.textScaleX = 1f
+        paint.typeface = Typeface.DEFAULT_BOLD
         paint.textAlign = Paint.Align.CENTER
 
         val xPos = canvas.width / 2f
@@ -168,24 +162,32 @@ class MapFragment : Fragment(), OnMapReadyCallback {
     }
 
     private fun radius(count: Int): Int {
-        if (count < 5) {
-            return 21
-        } else if (count < 10) {
-            return 26
-        } else if (count < 15) {
-            return 31
-        } else if (count < 100) {
-            return 36
-        } else if (count < 1000) {
-            return 41
-        } else if (count < 100000) {
-            return 46
-        } else {
-            return 60
+        return when {
+            count < 5 -> {
+                21
+            }
+            count < 10 -> {
+                26
+            }
+            count < 15 -> {
+                31
+            }
+            count < 100 -> {
+                36
+            }
+            count < 1000 -> {
+                41
+            }
+            count < 100000 -> {
+                46
+            }
+            else -> {
+                60
+            }
         }
     }
 }
 
 enum class VirusStatus {
-    confirmed, dead, cured, suspected
+    Confirmed, Dead, Cured, Suspected
 }

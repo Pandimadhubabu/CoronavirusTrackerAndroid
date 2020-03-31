@@ -16,7 +16,7 @@ class TimeHelper {
         @SuppressLint("StringFormatMatches")
         fun getTimeAgo(context: Context?, time: Long): String? {
             var time = time
-            if (time < 1000000000000L) { // if timestamp given in seconds, convert to millis
+            if (time < 1000000000000L) {
                 time *= 1000
             }
             val now: Long = System.currentTimeMillis()

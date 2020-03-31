@@ -1,6 +1,5 @@
 package com.whoever.coronatracker.services
 
-import android.util.Log
 import com.google.android.gms.maps.model.LatLng
 import com.google.gson.GsonBuilder
 import com.whoever.coronatracker.models.Country

@@ -30,7 +30,7 @@ class NotificationsAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     }
 
     override fun getItemViewType(position: Int): Int {
-        return MENU_ITEM_VIEW_TYPE
+        return 0
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
@@ -49,61 +49,59 @@ class NotificationsAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        if (holder.itemViewType == MENU_ITEM_VIEW_TYPE) {
-            var item = items[position] as News?
-            holder.itemView.newsTitle.text = item?.title
-            holder.itemView.newsSource.text = item?.source
-            holder.itemView.newspubDate.text = item?.pubDate
-            holder.itemView.newsImage.setImageResource(R.drawable.news_placeholder)
-            holder.itemView.setOnClickListener { v ->
-                val intent = Intent(v.context, NewsDetailActivity::class.java)
-                intent.putExtra("NewsDetailUrl", item?.link)
-                intent.putExtra("NewsDetailSource", item?.source)
-                v.context.startActivity(intent)
-            }
-            if (item?.link != null) {
-                var openGraphAsync = @SuppressLint("StaticFieldLeak")
-                object : AsyncTask<String, String, String>() {
-                    override fun doInBackground(vararg params: String?): String {
-                        return try {
-                            val openGraph = OpenGraph(item.link, true)
-                            val imgUrl = openGraph.getContent("image")
-                            return imgUrl
-                        } catch (e: Exception) {
-                            ""
-                        }
+        var item = items[position] as News?
+        holder.itemView.newsTitle.text = item?.title
+        holder.itemView.newsSource.text = item?.source
+        holder.itemView.newspubDate.text = item?.pubDate
+        holder.itemView.newsImage.setImageResource(R.drawable.news_placeholder)
+        holder.itemView.setOnClickListener { v ->
+            val intent = Intent(v.context, NewsDetailActivity::class.java)
+            intent.putExtra("NewsDetailUrl", item?.link)
+            intent.putExtra("NewsDetailSource", item?.source)
+            v.context.startActivity(intent)
+        }
+        if (item?.link != null) {
+            var openGraphAsync = @SuppressLint("StaticFieldLeak")
+            object : AsyncTask<String, String, String>() {
+                override fun doInBackground(vararg params: String?): String {
+                    return try {
+                        val openGraph = OpenGraph(item.link, true)
+                        val imgUrl = openGraph.getContent("image")
+                        return imgUrl
+                    } catch (e: Exception) {
+                        ""
                     }
+                }
 
-                    override fun onPostExecute(result: String?) {
-                        if (!result.isNullOrEmpty()) {
-                            try {
-                                if (!this.isCancelled) {
-                                    images[position] = result
-                                    Picasso.get()
-                                        .load(result)
-                                        .noFade()
-                                        .placeholder(R.drawable.news_placeholder)
-                                        .resize(100, 100)
-                                        .centerCrop()
-                                        .into(holder.itemView.newsImage)
-                                }
-                            } catch (e: Exception) {
+                override fun onPostExecute(result: String?) {
+                    if (!result.isNullOrEmpty()) {
+                        try {
+                            if (!this.isCancelled) {
+                                images[position] = result
+                                Picasso.get()
+                                    .load(result)
+                                    .noFade()
+                                    .placeholder(R.drawable.news_placeholder)
+                                    .resize(100, 100)
+                                    .centerCrop()
+                                    .into(holder.itemView.newsImage)
                             }
+                        } catch (e: Exception) {
                         }
                     }
+                }
 
-                }
-                if (!images.containsKey(position)) {
-                    imageTasks[position] = openGraphAsync
-                    openGraphAsync.execute(item.link)
-                } else {
-                    Picasso.get()
-                        .load(images[position])
-                        .placeholder(R.drawable.news_placeholder)
-                        .resize(100, 100)
-                        .centerCrop()
-                        .into(holder.itemView.newsImage)
-                }
+            }
+            if (!images.containsKey(position)) {
+                imageTasks[position] = openGraphAsync
+                openGraphAsync.execute(item.link)
+            } else {
+                Picasso.get()
+                    .load(images[position])
+                    .placeholder(R.drawable.news_placeholder)
+                    .resize(100, 100)
+                    .centerCrop()
+                    .into(holder.itemView.newsImage)
             }
         }
     }

@@ -15,7 +15,6 @@ import com.whoever.coronatracker.R
 import kotlinx.android.synthetic.main.custom_toolbar.*
 import com.whoever.coronatracker.helpers.*
 
-
 class CountryListFragment : Fragment() {
 
     private lateinit var homeViewModel: CountryListViewModel

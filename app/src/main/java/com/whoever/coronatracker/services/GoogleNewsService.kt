@@ -70,33 +70,30 @@ class GoogleNewsService {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             return loc.toLanguageTag()
         }
-        // we will use a dash as per BCP 47
+
         val SEP = '-'
         var language = loc.language
         var region = loc.country
         var variant = loc.variant
-        // special case for Norwegian Nynorsk since "NY" cannot be a variant as per BCP 47
-// this goes before the string matching since "NY" wont pass the variant checks
         if (language == "no" && region == "NO" && variant == "NY") {
             language = "nn"
             region = "NO"
             variant = ""
         }
         if (language.isEmpty() || !language.matches(Regex("\\p{Alpha}{2,8}"))) {
-            language = "und" // Follow the Locale#toLanguageTag() implementation
-            // which says to return "und" for Undetermined
+            language = "und"
         } else if (language == "iw") {
-            language = "he" // correct deprecated "Hebrew"
+            language = "he"
         } else if (language == "in") {
-            language = "id" // correct deprecated "Indonesian"
+            language = "id"
         } else if (language == "ji") {
-            language = "yi" // correct deprecated "Yiddish"
+            language = "yi"
         }
-        // ensure valid country code, if not well formed, it's omitted
+
         if (!region.matches(Regex("\\p{Alpha}{2}|\\p{Digit}{3}"))) {
             region = ""
         }
-        // variant subtags that begin with a letter must be at least 5 characters long
+
         if (!variant.matches(Regex("\\p{Alnum}{5,8}|\\p{Digit}\\p{Alnum}{3}"))) {
             variant = ""
         }

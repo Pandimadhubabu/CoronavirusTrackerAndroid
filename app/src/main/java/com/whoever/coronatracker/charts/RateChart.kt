@@ -39,7 +39,6 @@ class RateChart(context: Context, attributes: AttributeSet): PieChart(context, a
         this.holeRadius = 80f
         this.setOnChartValueSelectedListener(this@RateChart)
 
-
         val entries = ArrayList<PieEntry>()
         entries.add(PieEntry(value*100, resources.getString(R.string.mortality_rate)))
         entries.add(PieEntry((1-value)*100, ""))
@@ -80,8 +79,7 @@ class RateChart(context: Context, attributes: AttributeSet): PieChart(context, a
         this.centerText = text
     }
 
-    override fun onNothingSelected() {
-    }
+    override fun onNothingSelected() {}
 
     override fun onValueSelected(e: Entry?, h: Highlight?) {
         setCenterText(e as PieEntry)
